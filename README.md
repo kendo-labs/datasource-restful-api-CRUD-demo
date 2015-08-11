@@ -15,7 +15,7 @@ npm install
 npm run api
 ```
 
-(i.e. starts json api at and localhost:3000):
+(i.e. starts json api at localhost:3000):
 
 and, then:
 
