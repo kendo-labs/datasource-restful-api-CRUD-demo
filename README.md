@@ -1,6 +1,6 @@
 ### Kendo UI `DataSource` Restful API CRUD demo
 
-(Note: prerequisites = [Node.js](https://nodejs.org/download/)):
+(Note: prerequisites = [Node.js](https://nodejs.org/download/))
 
 #### Step 1: 
 
@@ -12,13 +12,13 @@ npm install
 
 #### Step 2: 
 
-Start Servers (one to server webpage and one to server API):
+Start Servers (one to server webpage and one to server API)
 
 ```
 npm run api
 ```
 
-(i.e. starts json api at localhost:3000):
+(i.e. starts json api at localhost:3000)
 
 and, then:
 
@@ -33,7 +33,7 @@ Visit [http://localhost:3002](http://localhost:3002) and add users then do some 
 
 #### Step 4: 
 
-Examime the [index.html](index.html) file with the Kendo UI / JS code and see how simple it can be.
+Examime the [index.html](index.html) file with the Kendo UI / JS code and see how simple it can be
 
 #### Step 5: 
 
