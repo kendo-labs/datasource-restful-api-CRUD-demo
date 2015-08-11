@@ -1,6 +1,6 @@
 ### Kendo UI `DataSource` Restful API CRUD demo
 
-This is a demo of the CRUD operations via a Kendo UI DataSource instance. The code contains only enough code logic to showcase the functionality of the DataSource abstraction. The demo does not promote anything else except the grokking of the DataSource configuration values in the context of a restful JSON api.
+This is a demo of the CRUD operations via a Kendo UI DataSource instance. The code contains only enough logic (tried cutting as much out as I could) to showcase the functionality of the DataSource abstraction. The demo does not promote anything else except the grokking of the DataSource configuration values in the context of a restful JSON api.
 
 (Note: prerequisites = [Node.js](https://nodejs.org/download/))
 
