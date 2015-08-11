@@ -9,7 +9,7 @@
 npm install
 ```
 
-#### Step 2: Clone this repo and from a terminal in the root of the jspm-startup directoy run:
+#### Step 2: Start Servers (one to server webpage and one to server API):
 
 ```
 npm run www 
