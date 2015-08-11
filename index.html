@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Kendo UI DataSource CRUD Example</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.318/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.318/styles/kendo.bootstrap.min.css" />
+</head>
+
+<body style="margin:100px">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="input-group">
+                <input type="text" id="name" class="form-control" placeholder="name">
+                <span class="input-group-btn">
+        <button class="btn btn-default" id="add" type="button">Add</button>
+      </span>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2015.1.318/js/kendo.all.min.js"></script>
+    <script type="text/x-kendo-template" id="template">
+        <tr>
+            <td>#:id#</td>
+            <td>
+                <input value="#:name#">
+                <button type="button" data-id="#:id#" id="update" class="btn btn-primary btn-xs">update</button>
+                <button type="button" data-id="#:id#" id="delete" class="btn btn-danger btn-xs">delete</button>
+            </td>
+        </tr>
+    </script>
+    <script>
+    //create DataSource instance
+    var dataSource = new kendo.data.DataSource({
+
+        autoSync: true, //sync changes with restful API automatically
+
+        transport: {
+            read: {
+                url: 'http://localhost:3000/users',
+                type: 'GET'
+            },
+            create: {
+                url: 'http://localhost:3000/users',
+                type: 'POST'
+            },
+            update: {
+                url: function(data) {
+                    return 'http://localhost:3000/users/' + data.id;
+                },
+                type: 'PUT'
+            },
+            destroy: {
+                url: function(data) {
+                    return 'http://localhost:3000/users/' + data.id;
+                },
+                type: 'DELETE'
+            }
+        },
+
+        schema: {
+            model: {
+                id: 'id'
+            }
+        },
+
+        change: function() {
+            $('tbody').html(kendo.render(kendo.template($('#template').html()), this.view()));
+        }
+
+    });
+
+    dataSource.read();
+
+    $('#add').on('click', function() {
+        dataSource.add({
+            name: $('#name').val()
+        });
+        //dataSource.sync(); //using autoSync: true so don't have to call
+    });
+
+    $('tbody').on('click', '#delete', function() {
+        var $this = $(this);
+        dataSource.remove(dataSource.get($this.data('id')));
+        //dataSource.sync(); //using autoSync: true so don't have to call
+    });
+
+    $('tbody').on('click', '#update', function() {
+        var $this = $(this);
+        dataSource.get($this.data('id')).set('name', $this.prev('input').val());
+        //dataSource.sync(); //using autoSync: true so don't have to call
+    });
+    </script>
+</body>
+
+</html>

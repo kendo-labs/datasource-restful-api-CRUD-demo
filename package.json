@@ -1,0 +1,12 @@
+{
+  "name": "k-ui-datasource",
+  "version": "1.0.0",
+  "scripts": {
+    "runwww":"browser-sync --files 'index.html' start --server --port 3002",
+    "runapi":"json-server --watch ./json-api/db.json"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.8.2",
+    "json-server": "^0.7.25"
+  }
+}
