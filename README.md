@@ -1,6 +1,5 @@
-# Kendo UI `DataSource` Restful API CRUD demo
+### Kendo UI `DataSource` Restful API CRUD demo
 
-## Installation 
 (Note: prerequisites = [Node.js](https://nodejs.org/download/)):
 
 #### Step 1: 
