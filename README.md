@@ -4,7 +4,7 @@
 
 #### Step 1: 
 
-Install npm packages ([json-server](https://github.com/typicode/json-server) and [browsersync](http://www.browsersync.io/))
+From the cloned directory install npm packages ([json-server](https://github.com/typicode/json-server) and [browsersync](http://www.browsersync.io/))
 
 ```
 npm install
@@ -12,7 +12,9 @@ npm install
 
 #### Step 2: 
 
-Start Servers (one to server webpage and one to server API)
+Start Servers (one to server webpage and one to server API) 
+
+From cloned directry run:
 
 ```
 npm run api
@@ -20,7 +22,7 @@ npm run api
 
 (i.e. starts json api at localhost:3000)
 
-and, then:
+and, then in another tab in the same directory:
 
 ```
 npm run www 
