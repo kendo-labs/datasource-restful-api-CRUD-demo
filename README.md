@@ -3,7 +3,7 @@
 ## Installation 
 (Note: prerequisites = [Node.js](https://nodejs.org/download/)):
 
-#### Step 1: Install jspm CLI globally
+#### Step 1: Install npm packages ([json-server](https://github.com/typicode/json-server) and [browsersync](http://www.browsersync.io/))
 
 ```
 npm install
@@ -12,8 +12,9 @@ npm install
 #### Step 2: Clone this repo and from a terminal in the root of the jspm-startup directoy run:
 
 ```
-npm run www
+npm run www 
 ```
+(i.e. starts browsersync and serves the index.html in localhost:3002)
 
 and, then:
 
@@ -21,6 +22,5 @@ and, then:
 npm run api
 ```
 
-## Serve It 
-(i.e. starts browser-sync and serves the index.html in localhost:3002):
+(i.e. starts json api at and localhost:3000):
 
