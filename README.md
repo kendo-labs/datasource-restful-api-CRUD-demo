@@ -24,8 +24,14 @@ npm run www
 ```
 (i.e. starts browsersync and serves the index.html at localhost:3002)
 
-#### Step 3: Visit [http://localhost:3002](http://localhost:3002) and add users then do some CRUD
+#### Step 3: 
 
-#### Step 4: Examime the [index.html](index.html) file with the Kendo UI / JS code and see how simple it can be.
+Visit [http://localhost:3002](http://localhost:3002) and add users then do some CRUD
 
-#### Step 5: Examine the [db.json](db.json) file and read up on ([json-server](https://github.com/typicode/json-server)
+#### Step 4: 
+
+Examime the [index.html](index.html) file with the Kendo UI / JS code and see how simple it can be.
+
+#### Step 5: 
+
+Examine the [db.json](db.json) file and read up on [json-server](https://github.com/typicode/json-server)
