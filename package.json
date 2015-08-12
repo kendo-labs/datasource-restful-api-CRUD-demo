@@ -2,7 +2,7 @@
   "name": "k-ui-datasource",
   "version": "1.0.0",
   "scripts": {
-    "www":"browser-sync --files 'index.html' start --server --port 3002",
+    "www":"browser-sync --files 'index.html' start --server --port 3002 --no-ghost-mode",
     "api":"json-server --watch ./json-api/db.json"
   },
   "devDependencies": {
