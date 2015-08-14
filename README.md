@@ -42,3 +42,10 @@ Examime the [index.html](index.html) file with the Kendo UI / JS code and see ho
 #### Step 5: 
 
 Examine the [db.json](db.json) file and read up on [json-server](https://github.com/typicode/json-server)
+
+---
+
+I've also included some demos which demonstrate the usage of CRUD transports on local data.
+
+* [local-data-CRUD-demo.html](local-data-CRUD-demo.html)
+* [local-data-CRUD-offline-demo.html](local-data-CRUD-demo.html)
