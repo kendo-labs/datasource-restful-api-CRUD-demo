@@ -2,17 +2,16 @@
 <html>
 
 <head>
-    <title>Kendo UI DataSource CRUD Example</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.318/styles/kendo.common.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
     <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.318/styles/kendo.bootstrap.min.css" />
 </head>
 
-<body style="margin:100px">
+<body>
     <div class="panel panel-default">
         <div class="panel-body">
-                        <label for="name">Enter users name click add:</label>
+            <label for="name">Enter users name click add:</label>
             <div class="input-group">
                 <input type="text" id="name" class="form-control" placeholder="name">
                 <span class="input-group-btn">
@@ -43,67 +42,91 @@
             </td>
         </tr>
     </script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2015.1.318/js/kendo.all.min.js"></script>
     <script>
-    //create DataSource instance
+    var localdata = [{
+        "id": 1,
+        "name": "Leanne Graham",
+    }];
+
+    var dataNextID = localdata.length + 1;
+
+    function getIndexById(id) {
+        var idx;
+        var l = localdata.length;
+
+        for (var j; j < l; j++) {
+            if (localdata[j].id == id) {
+                return j;
+            }
+        }
+        return null;
+    }
+
     var dataSource = new kendo.data.DataSource({
-
-        autoSync: true, //sync changes with restful API automatically
-
+        offlineStorage: 'users',
         transport: {
-            read: {
-                url: 'http://localhost:3000/users',
-                dataType: 'json', //not needed jQuery figures it out, shown to be verbose
-                type: 'GET' //defined but, this is the default
+            read: function(e) {
+                e.success(localdata);
             },
-            create: {
-                url: 'http://localhost:3000/users',
-                type: 'POST'
+            create: function(e) {
+                e.data.id = dataNextID++;
+                localdata.push(e.data);
+                e.success(e.data);
             },
-            update: {
-                url: function(data) {
-                    return 'http://localhost:3000/users/' + data.id;
-                },
-                type: 'PUT'
+            update: function(e) {
+                localdata[getIndexById(e.data.id)] = e.data;
+                e.success();
             },
-            destroy: {
-                url: function(data) {
-                    return 'http://localhost:3000/users/' + data.id;
-                },
-                type: 'DELETE'
+            destroy: function(e) {
+                localdata.splice(getIndexById(e.data.id), 1);
+                e.success();
             }
         },
-
         schema: {
             model: {
-                id: 'id'
+                id: 'id',
+                fields: {
+                    id: {
+                        editable: false,
+                        nullable: true
+                    },
+                    name: {
+                        validation: {
+                            required: true
+                        },
+                        type: 'string'
+                    },
+                }
             }
         },
 
         change: function() {
             $('tbody').html(kendo.render(kendo.template($('#template').html()), this.view()));
         }
-
     });
 
+    dataSource.online(false);
     dataSource.read();
 
     $('#add').on('click', function() {
         dataSource.add({
             name: $('#name').val()
         });
-        //dataSource.sync(); //using autoSync: true so don't have to call
+        dataSource.sync();
     });
 
     $('tbody').on('click', '#delete', function() {
         var $this = $(this);
         dataSource.remove(dataSource.get($this.data('id')));
-        //dataSource.sync(); //using autoSync: true so don't have to call
+        dataSource.sync();
     });
 
     $('tbody').on('click', '#update', function() {
         var $this = $(this);
         dataSource.get($this.data('id')).set('name', $this.prev('input').val());
-        //dataSource.sync(); //using autoSync: true so don't have to call
+        dataSource.sync();
     });
     </script>
 </body>
