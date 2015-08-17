@@ -19,30 +19,13 @@
         <button class="btn btn-primary" id="add" type="button">Add</button>
       </span>
             </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+            <br>
+            <div id="grid"></div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="http://cdn.kendostatic.com/2015.1.318/js/kendo.all.min.js"></script>
-    <script type="text/x-kendo-template" id="template">
-        <tr>
-            <td>#:id#</td>
-            <td>
-                <input value="#:name#">
-                <button type="button" data-id="#:id#" id="update" class="btn btn-default btn-xs">update</button>
-                <button type="button" data-id="#:id#" id="delete" class="btn btn-danger btn-xs">delete</button>
-            </td>
-        </tr>
-    </script>
+
     <script>
     //create DataSource instance
     var dataSource = new kendo.data.DataSource({
@@ -77,21 +60,20 @@
             model: {
                 id: 'id'
             }
-        },
-
-        change: function() {
-            $('tbody').html(
-                kendo.render(
-                    kendo.template(
-                        $('#template').html()
-                    ), this.view()
-                )
-            );
         }
 
     });
 
-     dataSource.read();
+    dataSource.read();
+
+    $('#grid').kendoGrid({
+        columns: [
+            {field: 'id'},
+            {field: 'name',template:'<input value="#:name#">'},
+            {field: ' ',template:'<button type="button" data-id="#:id#" id="update" class="btn btn-default btn-xs">update</button>&nbsp;<button type="button" data-id="#:id#" id="delete" class="btn btn-danger btn-xs">delete</button>'}
+        ],
+        dataSource: dataSource
+    });
 
     $('#add').on('click', function() {
         dataSource.add({
@@ -100,7 +82,7 @@
         //dataSource.sync(); //using autoSync: true so don't have to call
     });
 
-    $('tbody').on('click', '#delete', function() {
+    $('#grid').on('click', '#delete', function() {
         var $this = $(this);
         dataSource.remove(
             dataSource.get($this.data('id'))
@@ -108,11 +90,11 @@
         //dataSource.sync(); //using autoSync: true so don't have to call
     });
 
-    $('tbody').on('click', '#update', function() {
+    $('#grid').on('click', '#update', function() {
         var $this = $(this);
         dataSource.get(
             $this.data('id')
-        ).set('name', $this.prev('input').val());
+        ).set('name', $this.closest('tr').find('input').val());
         //dataSource.sync(); //using autoSync: true so don't have to call
     });
 
