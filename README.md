@@ -1,6 +1,6 @@
 ### Kendo UI `DataSource` RESTful API CRUD demo
 
-This is a demo of the CRUD operations via a Kendo UI `DataSource` instance. The code contains only enough logic (tried cutting as much out as I could) to showcase the functionality of the DataSource abstraction. The demo does not promote anything else except the grokking of the `DataSource` configuration values in the context of a RESTful JSON API.
+This is a demo of the CRUD operations via a Kendo UI `DataSource` instance. The code contains only enough logic (tried cutting as much out as I could) to showcase the functionality of the `DataSource` abstraction. The demo does not promote anything else except the grokking of the `DataSource` configuration values in the context of a RESTful JSON API.
 
 (Note: prerequisites = [Node.js](https://nodejs.org/download/))
 
@@ -45,7 +45,14 @@ Examine the [db.json](db.json) file and read up on [json-server](https://github.
 
 ---
 
-I've also included some demos which demonstrate the usage of CRUD transports on local data.
+I've also included some additional variations of the above demo.
+
+Same UI as RESTful API demo, but using local data instead:
 
 * [local-data-CRUD-demo.html](local-data-CRUD-demo.html)
 * [local-data-CRUD-offline-demo.html](local-data-CRUD-demo.html)
+
+Similar UI, but using DataSource instance with a Grid widget to display data:
+
+* [grid-widget.html](grid-widget.html)
+
