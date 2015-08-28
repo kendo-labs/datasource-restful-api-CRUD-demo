@@ -50,7 +50,7 @@ I've also included some additional variations of the above demo.
 Same UI as RESTful API demo, but using local data instead:
 
 * [local-data-CRUD-demo.html](local-data-CRUD-demo.html)
-* [local-data-CRUD-offline-demo.html](local-data-CRUD-demo.html)
+* [local-data-CRUD-offline-demo.html](local-data-CRUD-offline-demo.html)
 
 Similar UI, but using `DataSource` instance with a `Grid` widget to display data:
 
